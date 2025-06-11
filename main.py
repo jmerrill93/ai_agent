@@ -1,6 +1,7 @@
 import os
+import sys
 from dotenv import load_dotenv
-from google import genai    
+from google import genai   
 
 # Load environment variables from .env file
 load_dotenv()
@@ -8,9 +9,14 @@ api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 # Generating content using the Gemini API
+
+if len(sys.argv) < 2:
+    print ("Error: String required as command prompt input")
+    sys.exit(1)
+
 response = client.models.generate_content(
     model='gemini-2.0-flash-001', 
-    contents="Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    contents=sys.argv[1]
 )
 
 #printing response and token usage
