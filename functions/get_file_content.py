@@ -12,6 +12,6 @@ def get_file_content(working_directory, file_path):
 
             file_content_string = f.read(MAX_CHARS)
             if len(file_content_string) > MAX_CHARS:
-             print ("...File "{file_path}" truncated at 10000 characters")
+             print ("...File {file_path} truncated at 10000 characters")
     except Exception as e:
         return f'Error: {str(e)}'
