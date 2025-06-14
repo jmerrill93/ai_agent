@@ -11,8 +11,10 @@ def get_file_content(working_directory, file_path):
     try:
         with open(joined_path, "r") as f:
 
-            file_content_string = f.read(MAX_CHARS)
+            file_content_string = f.read()
+            file_read_max = f.read(MAX_CHARS)
             if len(file_content_string) > MAX_CHARS:
-                return f'{file_content_string}'
+                return f'{file_read_max} ... file {file_path} truncated at {MAX_CHARS} characters'
+            return file_content_string
     except Exception as e:
         return f'Error: {str(e)}'
